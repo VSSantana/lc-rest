@@ -1,32 +1,40 @@
 package br.com.letscode.rest.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-@Controller
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.letscode.rest.controller.dto.ClientDto;
+import br.com.letscode.rest.model.Client;
+
+@RestController
 public class ClienteController {
 
     @RequestMapping("/")
-    @ResponseBody
     public String home() {
-        return "HOME";
+        return "HOMe";
     }
 
     @RequestMapping("/client/list")
-    @ResponseBody
-    public String getClients() {
-        return "CLIENTES";
+    public List<ClientDto> getClients() {
+        Client client = Client.builder()
+                .name("Test of All")
+                .age(18)
+                .email("test@test.com.test")
+                .build();
+
+        return ClientDto.convertion(Arrays.asList(client, client, client));
     }
 
     @RequestMapping("/client")
-    @ResponseBody
     public String insertClient() {
         return "CLIENTES";
     }
 
     @RequestMapping("/client/{id}")
-    @ResponseBody
     public String alterClient() {
         return "CLIENTES";
     }
