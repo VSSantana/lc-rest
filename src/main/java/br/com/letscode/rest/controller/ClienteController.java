@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.letscode.rest.controller.dto.ClientDto;
 import br.com.letscode.rest.model.Client;
+import br.com.letscode.rest.repository.ClientRepository;
 
 @RestController
 public class ClienteController {
+
+    @Autowired
+    private ClientRepository clientRepository;
 
     @RequestMapping("/")
     public String home() {
@@ -20,13 +25,8 @@ public class ClienteController {
 
     @RequestMapping("/client/list")
     public List<ClientDto> getClients() {
-        Client client = Client.builder()
-                .name("Test of All")
-                .age(18)
-                .email("test@test.com.test")
-                .build();
-
-        return ClientDto.convertion(Arrays.asList(client, client, client));
+        List<Client> clients = clientRepository.findAll();
+        return ClientDto.convertion(clients);
     }
 
     @RequestMapping("/client")
