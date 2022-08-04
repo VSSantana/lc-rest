@@ -1,7 +1,6 @@
 package br.com.letscode.rest.controller.dto;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import br.com.letscode.rest.model.Client;
