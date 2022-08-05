@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 
 import br.com.letscode.rest.model.Client;
+import br.com.letscode.rest.repository.ClientRepository;
 
 public class ClientForm {
 
@@ -56,6 +57,15 @@ public class ClientForm {
 
     public Client convertion() {
         return new Client(name, age, vatnumber, email);
+    }
+
+    public Client update(Integer id, ClientRepository clientRepository) {
+        Client client = clientRepository.getReferenceById(id);
+        client.setName(this.name);
+        client.setAge(this.age);
+        client.setVatnumber(this.vatnumber);
+        client.setEmail(this.email);
+        return client;
     }
 
 }
