@@ -2,6 +2,7 @@ package br.com.letscode.rest.controller.form;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -13,15 +14,19 @@ import br.com.letscode.rest.repository.ClientRepository;
 public class ClientForm {
 
     @NotNull
+    @NotBlank
     @Length(min = 5, max = 100)
     private String name;
     @NotNull
+    @NotBlank
     @Min(18)
     private Integer age;
     @NotNull
+    @NotBlank
     @Pattern(regexp = "^[a-zA-Z]{2}[0-9]{9}")
     private String vatnumber;
     @NotNull
+    @NotBlank
     @Email
     private String email;
 
