@@ -3,6 +3,7 @@ package br.com.letscode.rest.controller.form;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -18,6 +19,7 @@ public class ClientForm {
     @Min(18)
     private Integer age;
     @NotNull
+    @Pattern(regexp = "^[a-zA-Z]{2}[0-9]{9}")
     private String vatnumber;
     @NotNull
     @Email

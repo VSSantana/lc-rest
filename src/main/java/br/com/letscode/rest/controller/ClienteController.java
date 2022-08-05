@@ -58,7 +58,7 @@ public class ClienteController {
         return ResponseEntity.notFound().build();
     }
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @PutMapping
     @Transactional
     public ResponseEntity<ClientDto> alterClient(@PathVariable Integer id, @RequestBody @Valid ClientForm clientForm) {
@@ -70,7 +70,7 @@ public class ClienteController {
         return ResponseEntity.notFound().build();
     }
 
-    @RequestMapping("/{id}")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @DeleteMapping
     @Transactional
     public ResponseEntity<?> deleteClient(@PathVariable Integer id) {
