@@ -1,5 +1,6 @@
 package br.com.letscode.rest.controller.form;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -16,18 +17,21 @@ public class ClientForm {
     @NotNull
     @NotBlank
     @Length(min = 5, max = 100)
+    @Column(nullable = false)
     private String name;
     @NotNull
-    @NotBlank
     @Min(18)
+    @Column(nullable = false)
     private Integer age;
     @NotNull
     @NotBlank
     @Pattern(regexp = "^[a-zA-Z]{2}[0-9]{9}")
+    @Column(nullable = false)
     private String vatnumber;
     @NotNull
     @NotBlank
     @Email
+    @Column(nullable = false)
     private String email;
 
     public void setName(String name) {
